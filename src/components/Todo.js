@@ -57,7 +57,7 @@ export default function Todo({
           />
         </form>
       ) : (
-        <p>{todo.text}</p>
+        <p onClick={() => editTodo(index)}>{todo.text}</p>
       )}
       <div>
         <button className="button complete" onClick={() => completeTodo(index)}>
