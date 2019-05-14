@@ -11,15 +11,18 @@ function App() {
   const [todos, setTodos] = useState([
     {
       text: "Learn about React",
-      isCompleted: false
+      isCompleted: false,
+      isEditing: false
     },
     {
       text: "Learn Laravel",
-      isCompleted: false
+      isCompleted: false,
+      isEditing: false
     },
     {
       text: "Build really cool todo app",
-      isCompleted: false
+      isCompleted: false,
+      isEditing: false
     }
   ]);
 
@@ -31,6 +34,12 @@ function App() {
   const completeTodo = index => {
     const newTodos = [...todos];
     newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+
+  const editTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isEditing = true;
     setTodos(newTodos);
   };
 
@@ -49,6 +58,7 @@ function App() {
             index={index}
             todo={todo}
             completeTodo={completeTodo}
+            editTodo={editTodo}
             removeTodo={removeTodo}
           />
         ))}
