@@ -5,9 +5,6 @@ import TodoForm from "./components/TodoForm";
 
 const AppContainer = styled.div`
   text-align: center;
-
-  .todo {
-  }
 `;
 
 function App() {
