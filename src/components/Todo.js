@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const TodoContainer = styled.div`
@@ -35,11 +35,13 @@ export default function Todo({
   editTodo,
   removeTodo
 }) {
+  const [edit, setEdit] = useState("");
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("You hit enter");
+    todo.text = edit;
     todo.isEditing = false;
-    console.table(todo);
+    setEdit("");
   };
 
   return (
@@ -49,7 +51,10 @@ export default function Todo({
     >
       {todo.isEditing ? (
         <form onSubmit={handleSubmit}>
-          <input defaultValue={todo.text} />
+          <input
+            defaultValue={todo.text}
+            onChange={e => setEdit(e.target.value)}
+          />
         </form>
       ) : (
         <p>{todo.text}</p>
