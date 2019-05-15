@@ -10,7 +10,6 @@ const TodoContainer = styled.div`
   }
 
   .button {
-    /* background: none; */
     margin: 0 5px;
     border: none;
 
@@ -28,17 +27,13 @@ const TodoContainer = styled.div`
   }
 `;
 
-export default function Todo({
-  todo,
-  index,
-  completeTodo,
-  editTodo,
-  removeTodo
-}) {
-  const [edit, setEdit] = useState("");
+const Todo = ({ todo, index, completeTodo, editTodo, removeTodo }) => {
+  // * Declare the edit hook with a default of the original text
+  const [edit, setEdit] = useState(todo.text);
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (!edit) return;
     todo.text = edit;
     todo.isEditing = false;
     setEdit("");
@@ -72,4 +67,6 @@ export default function Todo({
       </div>
     </TodoContainer>
   );
-}
+};
+
+export default Todo;

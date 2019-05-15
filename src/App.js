@@ -7,7 +7,8 @@ const AppContainer = styled.div`
   text-align: center;
 `;
 
-function App() {
+const App = () => {
+  // * Declare the todo hook, with default todo values
   const [todos, setTodos] = useState([
     {
       text: "Learn about React",
@@ -66,6 +67,6 @@ function App() {
       </div>
     </AppContainer>
   );
-}
+};
 
 export default App;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
-export default function TodoForm({ addTodo }) {
+const TodoForm = ({ addTodo }) => {
+  // * Declare the value hook, with a default of an empty string
   const [value, setValue] = useState("");
 
   const handleSubmit = e => {
@@ -21,4 +22,6 @@ export default function TodoForm({ addTodo }) {
       />
     </form>
   );
-}
+};
+
+export default TodoForm;
