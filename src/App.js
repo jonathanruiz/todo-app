@@ -38,6 +38,12 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  const undoComplete = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = false;
+    setTodos(newTodos);
+  };
+
   const editTodo = index => {
     const newTodos = [...todos];
     newTodos[index].isEditing = true;
@@ -59,6 +65,7 @@ const App = () => {
             index={index}
             todo={todo}
             completeTodo={completeTodo}
+            undoComplete={undoComplete}
             editTodo={editTodo}
             removeTodo={removeTodo}
           />

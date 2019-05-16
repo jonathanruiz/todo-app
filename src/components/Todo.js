@@ -22,12 +22,23 @@ const TodoContainer = styled.div`
     background-color: #76ff03;
   }
 
+  .undo {
+    background-color: orange;
+  }
+
   .remove {
     background-color: #f44336;
   }
 `;
 
-const Todo = ({ todo, index, completeTodo, editTodo, removeTodo }) => {
+const Todo = ({
+  todo,
+  index,
+  completeTodo,
+  undoComplete,
+  editTodo,
+  removeTodo
+}) => {
   // * Declare the edit hook with a default of the original text
   const [edit, setEdit] = useState(todo.text);
 
@@ -55,9 +66,20 @@ const Todo = ({ todo, index, completeTodo, editTodo, removeTodo }) => {
         <p onClick={() => editTodo(index)}>{todo.text}</p>
       )}
       <div>
-        <button className="button complete" onClick={() => completeTodo(index)}>
-          Done
-        </button>
+        {// If todo is completed, then show undo button, otherwise
+        // show the done button
+        todo.isCompleted ? (
+          <button className="button undo" onClick={() => undoComplete(index)}>
+            Undo
+          </button>
+        ) : (
+          <button
+            className="button complete"
+            onClick={() => completeTodo(index)}
+          >
+            Done
+          </button>
+        )}
         <button className="button edit" onClick={() => editTodo(index)}>
           Edit
         </button>
