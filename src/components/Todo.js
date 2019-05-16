@@ -17,18 +17,22 @@ const TodoContainer = styled.div`
       cursor: pointer;
     }
   }
+`;
 
-  .complete {
-    background-color: #76ff03;
-  }
+const Complete = styled.button`
+  background-color: #76ff03;
+`;
 
-  .undo {
-    background-color: orange;
-  }
+const Undo = styled.button`
+  background-color: #ffab40;
+`;
 
-  .remove {
-    background-color: #f44336;
-  }
+const Edit = styled.button`
+  background-color: #d8d8d8;
+`;
+
+const Remove = styled.button`
+  background-color: #f44336;
 `;
 
 const Todo = ({
@@ -40,7 +44,7 @@ const Todo = ({
   removeTodo
 }) => {
   // * Declare the edit hook with a default of the original text
-  const [edit, setEdit] = useState(todo.text);
+  const [edit, setEdit] = useState("");
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -58,6 +62,7 @@ const Todo = ({
       {todo.isEditing ? (
         <form onSubmit={handleSubmit}>
           <input
+            type="text"
             defaultValue={todo.text}
             onChange={e => setEdit(e.target.value)}
           />
@@ -69,23 +74,24 @@ const Todo = ({
         {// If todo is completed, then show undo button, otherwise
         // show the done button
         todo.isCompleted ? (
-          <button className="button undo" onClick={() => undoComplete(index)}>
+          <Undo className="button undo" onClick={() => undoComplete(index)}>
             Undo
-          </button>
+          </Undo>
         ) : (
-          <button
+          <Complete
             className="button complete"
             onClick={() => completeTodo(index)}
           >
             Done
-          </button>
+          </Complete>
         )}
-        <button className="button edit" onClick={() => editTodo(index)}>
+
+        <Edit className="button edit" onClick={() => editTodo(index)}>
           Edit
-        </button>
-        <button className="button remove" onClick={() => removeTodo(index)}>
+        </Edit>
+        <Remove className="button remove" onClick={() => removeTodo(index)}>
           X
-        </button>
+        </Remove>
       </div>
     </TodoContainer>
   );
