@@ -1,7 +1,23 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 import Todo from "./components/Todo";
 import TodoForm from "./components/TodoForm";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+`;
 
 const AppContainer = styled.div`
   text-align: center;
@@ -73,6 +89,7 @@ const App = () => {
 
   return (
     <AppContainer>
+      <GlobalStyle />
       <div className="todo-list">
         {todos.map((todo, index) => (
           <Todo
