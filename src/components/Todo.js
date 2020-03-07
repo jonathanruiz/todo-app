@@ -56,10 +56,12 @@ const Todo = ({
 
   return (
     <TodoContainer
+      // If the item is completed, then add then strike it with CSS, otherwise add no style is added
       style={{ textDecoration: todo.isCompleted ? "line-through" : "" }}
       className="todo"
     >
-      {todo.isEditing ? (
+      {// If the item is in edit mode, then bring up an input box to add todos
+      todo.isEditing ? (
         <form onSubmit={handleSubmit}>
           <input
             type="text"
